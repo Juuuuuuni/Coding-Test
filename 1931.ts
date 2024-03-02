@@ -13,16 +13,14 @@
 * */
 
 const fs = require('fs');
-const [N, ...meetingTimeRangesString] = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
+
+const [_, ...meetingTimeRangesString] = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
 
 // 끝나는 시간을 기준으로 오름차순으로 정렬
 const meetingTimeRanges = [...meetingTimeRangesString]
     .map(s => s.split(" ").map(Number))
-    .sort(([prevStartTime, prevEndTime], [curStartTime, curEndTime]) => {
-            if (prevEndTime === curEndTime) return prevStartTime - curStartTime;
-
-            return prevEndTime - curEndTime;
-        }
+    .sort(([prevStartTime, prevEndTime], [curStartTime, curEndTime]) =>
+        prevEndTime === curEndTime ? prevStartTime - curStartTime :prevEndTime - curEndTime
     );
 
 // 현재 진행중인 회의의 끝나는 시간
