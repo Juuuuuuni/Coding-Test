@@ -18,23 +18,20 @@
 *
 *
 * */
+
 const fs = require('fs');
-const [caseLength, ...rest] = fs.readFileSync("/dev/stdin").toString().trim().split('\n').map(Number);
-const cases = [...rest];
+const [caseLength, ...rest] = fs.readFileSync("/dev/stdin").toString().trim().split('\n');
+const cases = rest.map(Number);
+const max = Math.max(...cases);
 
-// const cases = [6, 22];
-
-const fibonacciArray = new Array(40);
-
-console.log(fibonacciArray);
+const fibonacciArray = Array(max);
 fibonacciArray[0] = [1, 0];
 fibonacciArray[1] = [0, 1];
 
-for (let i = 2; i < 40; i++) {
+for (let i = 2; i <= max; i++) {
     const prev = fibonacciArray[i - 1];
     const prevPrev = fibonacciArray[i - 2];
     fibonacciArray[i] = [prev[0] + prevPrev[0], prev[1] + prevPrev[1]];
 }
 
-console.log(fibonacciArray);
 cases.map((c) => console.log(`${fibonacciArray[c][0]} ${fibonacciArray[c][1]}`));
