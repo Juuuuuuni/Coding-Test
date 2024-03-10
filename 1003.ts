@@ -15,6 +15,8 @@
 * => n >= 2,  계차가 등차인 수열의 합
 *
 * 길이가 N인 배열을 만들어서 점화식을 통해 값을 대입해놓고 입력된 값으로 꺼내 출력한다.
+* 시간 복잡도 O(n)
+* 공간 복잡도 O(2n) => O(n)
 *
 *
 * */
@@ -25,6 +27,7 @@ const cases = rest.map(Number);
 const max = Math.max(...cases);
 
 const fibonacciArray = Array(max);
+
 fibonacciArray[0] = [1, 0];
 fibonacciArray[1] = [0, 1];
 
