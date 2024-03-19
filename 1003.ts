@@ -1,4 +1,5 @@
 /*
+* https://www.acmicpc.net/problem/1003
 *
 * f(0) : 0 출력, 0 리턴 => 1 0
 * f(1) : 1 출력, 1 리턴 => 0 1

@@ -1,3 +1,9 @@
+/*
+* https://www.acmicpc.net/problem/11047
+*
+* */
+
+
 const fs = require("fs");
 const [nAndK, ...A] = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
 const [N, K] = nAndK.split(" ").map(Number);

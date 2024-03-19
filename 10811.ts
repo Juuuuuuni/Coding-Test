@@ -1,4 +1,5 @@
 /*
+* https://www.acmicpc.net/problem/10811
 * 주어진 범위의 배열을 잘라서 reverse 시키고 다시 원 배열에 끼워넣는다.
 * 시간복잡도 : O(n^2)
 * 공간복잡도 : O(3n) => O(n)
