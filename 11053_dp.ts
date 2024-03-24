@@ -10,14 +10,13 @@ LIS: Longest Increasing Subsequence
 * 공간 복잡도: O(N)
 *
 * */
-import {binarySearch} from "./utils/binarySeach";
 
 const fs = require('fs');
 const [sequenceLength, sequenceString] = fs.readFileSync('/dev/stdin').toString().split('\n');
 // const [sequenceLength, sequenceString] = ["6", "10 20 10 30 20 50"]
 const sequenceList = sequenceString.split(" ").map(Number);
 
-
+// [10 20 10 30 20 50]
 const LIS = new Array(Number(sequenceLength));
 
 for(let i = 0; i < sequenceLength; i++) {
