@@ -22,7 +22,6 @@
 *
 * */
 
-
 const fs = require('fs');
 const [caseLength, ...rest] = fs.readFileSync("/dev/stdin").toString().trim().split('\n');
 const cases = rest.map(Number);
