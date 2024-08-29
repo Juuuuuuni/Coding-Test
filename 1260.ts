@@ -7,7 +7,7 @@
 
 
 const fs = require("fs");
-const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
+const input = "4 5 1\n1 2\n1 3\n1 4\n2 4\n3 4".trim().split("\n");
 
 const [N, M, V] = input.shift().split(" ").map(Number);
 const line = input.map((l) => l.split(" ").map(Number));
@@ -36,7 +36,6 @@ function dfs(cnt) {
     visited[cnt] = 1;
     for (let next of graph[cnt]) {
         if (!visited[next]) {
-            visited[next] = 1;
             dfs(next);
         }
     }
