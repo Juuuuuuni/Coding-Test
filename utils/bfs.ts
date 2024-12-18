@@ -8,11 +8,16 @@ export const bfs = (graph: any, start: any) => {
 
     while (queue.length > 0) {
         const vertex = queue.shift();
-        console.log(vertex);
+
+        if (!visited.has(vertex)) {
+            visited.add(vertex);
+
+            console.log(vertex);
+        }
+
 
         for(const neighbor of graph[vertex]) {
             if (!visited.has(neighbor)) {
-                visited.add(neighbor);
                 queue.push(neighbor)
             }
         }
