@@ -25,6 +25,9 @@ const [NM, ...chessBoard] = fs.readFileSync("./input.txt").toString().trim().spl
 const [N, M] = NM.split(" ").map(Number);
 
 
+
+// const nToNBoard = chessBoard.slice(0, n).map(row => row.slice(0, n));
+
 let min = Infinity;
 for (let i = 0; i <= N - 8; i++) {
   for (let j = 0; j <= M - 8; j++) {
