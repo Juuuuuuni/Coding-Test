@@ -6,8 +6,7 @@ for (const spell of inputs) {
   if (spellCountMap.has(upperCase)) {
     const currentCount = spellCountMap.get(upperCase);
     spellCountMap.set(upperCase, currentCount + 1);
-  }
-  else {
+  } else {
     spellCountMap.set(upperCase, 1);
   }
 }

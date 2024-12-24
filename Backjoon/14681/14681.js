@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require("fs");
 const input = fs.readFileSync("./input.txt").toString().trim().split("\n");
 
 const x = Number(input[0]);

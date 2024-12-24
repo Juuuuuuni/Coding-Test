@@ -5,7 +5,6 @@
 // 2 4
 // 3 4
 
-
 const fs = require("fs");
 const input = "4 5 1\n1 2\n1 3\n1 4\n2 4\n3 4".trim().split("\n");
 
@@ -15,30 +14,30 @@ const line = input.map((l) => l.split(" ").map(Number));
 const ansDfs = [];
 const ansBfs = [];
 
-const graph = Array.from({ length: N + 1}, () => []);
+const graph = Array.from({ length: N + 1 }, () => []);
 let visited = Array.from({ length: N + 1 }, () => 0);
 
 const queue = [];
 
 for (let [from, to] of line) {
-    graph[from].push(to);
-    graph[to].push(from);
+  graph[from].push(to);
+  graph[to].push(from);
 }
 
 for (let i = 1; i < graph.length; i++) {
-    graph[i].sort((a, b) => a - b);
+  graph[i].sort((a, b) => a - b);
 }
 
 function dfs(cnt) {
-    if (ansDfs.length === N) return;
+  if (ansDfs.length === N) return;
 
-    ansDfs.push(cnt);
-    visited[cnt] = 1;
-    for (let next of graph[cnt]) {
-        if (!visited[next]) {
-            dfs(next);
-        }
+  ansDfs.push(cnt);
+  visited[cnt] = 1;
+  for (let next of graph[cnt]) {
+    if (!visited[next]) {
+      dfs(next);
     }
+  }
 }
 
 dfs(V);
@@ -46,18 +45,18 @@ dfs(V);
 visited = visited.map(() => 0);
 
 function bfs() {
-    queue.push(V);
-    visited[V] = 1;
-    while (queue.length !== 0) {
-        const now = queue.shift();
-        ansBfs.push(now);
-        for (let next of graph[now]) {
-            if (!visited[next]) {
-                queue.push(next);
-                visited[next] = 1;
-            }
-        }
+  queue.push(V);
+  visited[V] = 1;
+  while (queue.length !== 0) {
+    const now = queue.shift();
+    ansBfs.push(now);
+    for (let next of graph[now]) {
+      if (!visited[next]) {
+        queue.push(next);
+        visited[next] = 1;
+      }
     }
+  }
 }
 
 bfs();

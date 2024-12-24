@@ -1,5 +1,10 @@
 const fs = require("fs");
-const [NM, ...matrix] = fs.readFileSync("./input.txt").toString().trim().split("\n").map(a => a.split(" "));
+const [NM, ...matrix] = fs
+  .readFileSync("./input.txt")
+  .toString()
+  .trim()
+  .split("\n")
+  .map((a) => a.split(" "));
 const [N, M] = NM.map(Number);
 
 const matrixAB = [];
@@ -16,5 +21,4 @@ for (let i = 0; i < N; i++) {
   matrixAB.push(matrixABElement);
 }
 
-matrixAB.map(element => console.log(element.join(" ")));
-
+matrixAB.map((element) => console.log(element.join(" ")));

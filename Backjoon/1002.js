@@ -6,6 +6,6 @@ const rl = readline.createInterface({
 
 rl.on("line", (line) => {
   const [A, B] = line.split(" ").map(Number);
-  console.log(A*B);
+  console.log(A * B);
   rl.close();
-})
+});

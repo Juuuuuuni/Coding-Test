@@ -10,20 +10,22 @@ LIS: Longest Increasing Subsequence
 * */
 import { binarySearch } from "./utils/binarySeach";
 
-const fs = require('fs');
-const [sequenceLength, sequenceString] = fs.readFileSync('/dev/stdin').toString().split('\n');
+const fs = require("fs");
+const [sequenceLength, sequenceString] = fs
+  .readFileSync("/dev/stdin")
+  .toString()
+  .split("\n");
 // const [sequenceLength, sequenceString] = ["6", "10 20 10 30 20 50"]
 const sequenceList = sequenceString.split(" ").map(Number);
 
 const LIS = [sequenceList[0]];
 for (let num of sequenceList) {
-    if (LIS[LIS.length - 1] < num) {
-        LIS.push(num);
-    } else {
-        let idx = binarySearch(num, LIS);
-        LIS[idx] = num;
-    }
+  if (LIS[LIS.length - 1] < num) {
+    LIS.push(num);
+  } else {
+    let idx = binarySearch(num, LIS);
+    LIS[idx] = num;
+  }
 }
-
 
 console.log(LIS.length);
