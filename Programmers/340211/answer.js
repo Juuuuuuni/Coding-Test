@@ -1,12 +1,14 @@
 solution(
   [
-    [1, 1],
     [2, 2],
-    [3, 3],
+    [2, 3],
+    [2, 7],
+    [6, 6],
+    [5, 2],
   ],
   [
-    [1, 2, 1],
-    [3, 2, 1],
+    [2, 3, 4, 5],
+    [1, 3, 4, 5],
   ],
 );
 
@@ -22,8 +24,7 @@ function solution(points, routes) {
 
   const pathHistories = [];
 
-  routes.forEach((route, index) => {
-    const [startPoint, endPoint] = route;
+  const addPath = (startPoint, endPoint) => {
     const [startPointIndex, endPointIndex] = [startPoint - 1, endPoint - 1];
     const [startPointX, startPointY] = points[startPointIndex];
     const [endPointX, endPointY] = points[endPointIndex];
@@ -43,7 +44,27 @@ function solution(points, routes) {
     }
 
     pathHistory.push([endPointX, endPointY]);
-    pathHistories.push(pathHistory);
+
+    return pathHistory;
+    // pathHistories.push(pathHistory);
+  };
+
+  routes.forEach((route, index) => {
+    if (route.length === 2) {
+      const pathHistory = addPath(route[0], route[1]);
+      pathHistories.push(pathHistory);
+      // [[ [1, 2], [2, 4] ], [ [1, 2], [2, 4] ]]
+    } else {
+      console.log("route: ", route);
+      let pathHistoryWith = [];
+      for (let i = 0; i < route.length - 1; i++) {
+        const pathHistory = addPath(route[i], route[i + 1]);
+        console.log("pathHistory: ", pathHistory);
+        // [ [1, 2], [2, 4] ]
+        pathHistoryWith = [...pathHistoryWith, ...pathHistory];
+        pathHistories.push(pathHistoryWith);
+      }
+    }
   });
 
   let maxLengthPath = 0;
